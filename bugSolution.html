@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text should be visible.
+  </div>
+
+  <script>
+    const newDiv = document.createElement('div');
+    newDiv.id = 'anotherDiv';
+    document.body.appendChild(newDiv);
+
+    requestAnimationFrame(() => {
+      // Using requestAnimationFrame ensures the element is fully in the DOM before modification.
+      document.getElementById('anotherDiv').innerHTML = 'This text should show';
+    });
+  </script>
+</body>
+</html>
