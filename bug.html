@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text should be visible.
+  </div>
+
+  <script>
+    // Incorrectly using innerHTML to modify the content of a dynamically created element
+    const newDiv = document.createElement('div');
+    newDiv.id = 'anotherDiv';
+    document.body.appendChild(newDiv);
+
+    setTimeout(() => {
+      // This will fail because the element might not be fully added to the DOM yet. 
+      document.getElementById('anotherDiv').innerHTML = 'This text might not show';
+    }, 0);
+  </script>
+</body>
+</html>
